@@ -5,7 +5,9 @@
   "scripts": {
     "server": "MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors",
     "test": "MODE=test webpack --config webpack.config.production.js --progress && MODE=test node packageSuccess",
-    "php":"MODE=php webpack --config webpack.config.production.js --progress && MODE=php node packageSuccess"
+    "php":"MODE=php webpack --config webpack.config.production.js --progress && MODE=php node packageSuccess",
+
+    "mobileServer":"app=mobile NODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors "
   },
   "author": "FE@wepiao.com",
   "license": "MIT",

@@ -1,0 +1,8 @@
+{
+    "base": "src",
+    "build": "dist",
+    "phpBuild":"php",
+    "staticUrl":"",
+    "host":"172.16.129.38",
+    "port":"3000"
+}

@@ -1,10 +1,21 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
-var config = require('./config.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var dev =process.env.MODE;
-var entryPage=path.join(__dirname, config.base + '/js/pages/');
+//var entryPage=path.join(__dirname, config.base + '/js/pages/');
+
+
+var app =process.env.app;
+var chunkConfig;
+var entryFile=path.join(__dirname, 'src/');
+switch (app){
+    case "mobile":
+        chunkConfig=require("./mobileConfig.js");
+        entryFile+="mobile/js/view/";
+        break;
+}
+
 var webpackDefaultConfig = {
     /**
      * Entry points to the project
@@ -15,7 +26,7 @@ var webpackDefaultConfig = {
      * 这里是程序的入口，每个页面如果有js都需要在这里配置入口
      */
     entry: {
-        'common':['react', 'react-dom',path.join(__dirname, config.base + '/js/util/common')]
+        'common':['react', 'react-dom',path.join(__dirname,'src/common/common.js')]
     },
 
     /**
@@ -24,7 +35,7 @@ var webpackDefaultConfig = {
      * js输出设置
      */
     output: {
-        path: path.join(__dirname,dev!="server"?config.build:""),
+        path: path.join(__dirname,"dist"),
         publicPath:"",
         chunkFilename:dev=="test"?"js/[name]-[chunkhash:8].js": 'js/[name].js',
         filename: dev=="test"?'js/[name]-[chunkhash:8].js':'js/[name].js'
@@ -46,11 +57,13 @@ var webpackDefaultConfig = {
                 query: {
                     presets: ['react', 'es2015']
                 }
-            },{
+            },
+            {
                 test: /\.(scss|css)$/,
                 include: __dirname,
                 loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')
-            }]
+            }
+        ]
     },
     /**
      * Resolve
@@ -61,19 +74,7 @@ var webpackDefaultConfig = {
         alias: {
             //这里设置别名
             //jsx控件文件夹
-            controlJs: path.join(__dirname, config.base + '/js/components'),
-            //jsx页面文件夹
-            pageJs:path.join(__dirname, config.base + '/js/pages'),
-            //js工具文件
-            utilJs:path.join(__dirname, config.base + '/js/util'),
-            //页面css文件夹
-            pageCss: path.join(__dirname, config.base + '/css/pages'),
-            //控件css文件夹
-            controlCss:path.join(__dirname, config.base + '/css/components'),
-            //工具css文件夹
-            utilCss:path.join(__dirname, config.base + '/css/util'),
-            //iamages
-            images:path.join(__dirname, config.base + '/images')
+            C:path.join(__dirname,"src/components")
         },
         modulesDirectories: ["web_modules", "node_modules", 'bower_components'],
         extensions: ['', '.js', '.json', '.jsx', '.scss', '.css']
@@ -105,43 +106,13 @@ var webpackDefaultConfig = {
     ]
 };
 
-var templateList=[
-    //首页
-    {fileName:"default/index",chunk:"index"},
-    //选择场次
-    {fileName:"item/show",chunk:"chooseSession"},
-    //选择分区
-    {fileName:"item/show_area",chunk:"choosePartition"},
-    //选择座位
-    {fileName:"item/area_seat",chunk:"chooseSeat"},
-    //项目明细
-    {fileName:"item/detail",chunk:"detail"},
-    //订单确认
-    {fileName:"order/confirm",chunk:"confirm",title:"支付订单"},
-    //订单页面
-    {fileName:"order/order",chunk:"order"},
-    //订单详情
-    {fileName:"order/orderDetail",chunk:"orderDetail",title:"订单详情"},
-    //关注页面
-    {fileName:"default/focus",chunk:"focus"},
-    //预约页面
-    {fileName:"default/subscribe",chunk:"subscribe"},
-    //错误页面
-    {fileName:"error/index",chunk:"error",title:"错误"},
-    //支付成功
-    {fileName:"order/success",chunk:'success',title:"下单成功"},
-    //活动专题-普通
-    {fileName:"active/activity",chunk:'activity',title:""},
-    //活动专题-刮刮卡
-    {fileName:"active/scratchCard",chunk:'scratchCard',title:""},
-];
 
 //判断采用哪种模板
 var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
 
-templateList.forEach(function(item,i){
+chunkConfig.forEach(function(item,i){
 
-    webpackDefaultConfig.entry[item.chunk]=entryPage+item.chunk;
+    webpackDefaultConfig.entry[item.chunk]=entryFile+item.chunk;
 
     webpackDefaultConfig.plugins.push(new HtmlWebpackPlugin({
         title:item.title || "",
