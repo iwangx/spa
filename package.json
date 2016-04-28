@@ -1,0 +1,47 @@
+{
+  "name": "wx-reflux",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "server": "MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors",
+    "test": "MODE=test webpack --config webpack.config.production.js --progress && MODE=test node packageSuccess",
+    "php":"MODE=php webpack --config webpack.config.production.js --progress && MODE=php node packageSuccess"
+  },
+  "author": "FE@wepiao.com",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "autoprefixer-loader": "^3.1.0",
+    "css-loader": "^0.21.0",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.1",
+    "html-webpack-plugin": "^2.16.0",
+    "imports-loader": "^0.6.5",
+    "json-loader": "^0.5.2",
+    "node-sass": "^3.4.1",
+    "react-hot-loader": "^1.2.4",
+    "rimraf": "^2.4.3",
+    "run-sequence": "^1.0.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "babel-preset-react":"^6.5.0",
+    "babel-preset-es2015":"^6.6.0"
+  },
+  "dependencies": {
+    "reqwest": "^2.0.5",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "fastclick":"^1.0.6",
+    "iscroll":"^5.1.3",
+    "zepto":"^1.0.1",
+    "swiper":"^3.2.7",
+    "classname":"0.0.0",
+    "reflux":"^0.4.1"
+  }
+}
+

@@ -1,0 +1,62 @@
+/**
+ * Created by jiangtao on 16/2/22.
+ */
+//座位普通样式
+function defaultStyle(canvasPath){
+    canvasPath.moveTo(35.8,0);
+    canvasPath.lineTo(34.4,0);
+    canvasPath.bezierCurveTo(32.6,0,31.2,1.4,31.2,3.2);
+    canvasPath.lineTo(31.2,4.9);
+    canvasPath.lineTo(7.9,4.9);
+    canvasPath.lineTo(7.9,3.2);
+    canvasPath.bezierCurveTo(7.9,1.4,6.4,0,4.7,0);
+    canvasPath.lineTo(3.2,0);
+    canvasPath.bezierCurveTo(1.4,0,0,1.4,0,3.2);
+    canvasPath.lineTo(0,7.2);
+    canvasPath.lineTo(0,12.2);
+    canvasPath.lineTo(0,33.7);
+    canvasPath.bezierCurveTo(0,35,1,36,2.3,36);
+    canvasPath.lineTo(36.699999999999996,36);
+    canvasPath.bezierCurveTo(37.99999999999999,36,38.99999999999999,35,38.99999999999999,33.7);
+    canvasPath.lineTo(38.99999999999999,12.2);
+    canvasPath.lineTo(38.99999999999999,7.199999999999999);
+    canvasPath.lineTo(38.99999999999999,3.1999999999999993);
+    canvasPath.bezierCurveTo(39,1.4,37.6,0,35.8,0);
+};
+//座位被选中的样式
+function selectStyle(canvasPath){
+    canvasPath.moveTo(35.8,0);
+    canvasPath.lineTo(34.4,0);
+    canvasPath.bezierCurveTo(32.6,0,31.2,1.4,31.2,3.2);
+    canvasPath.lineTo(31.2,4.9);
+    canvasPath.lineTo(7.9,4.9);
+    canvasPath.lineTo(7.9,3.2);
+    canvasPath.bezierCurveTo(7.9,1.4,6.4,0,4.7,0);
+    canvasPath.lineTo(3.2,0);
+    canvasPath.bezierCurveTo(1.4,0,0,1.4,0,3.2);
+    canvasPath.lineTo(0,7.2);
+    canvasPath.lineTo(0,12.2);
+    canvasPath.lineTo(0,33.7);
+    canvasPath.bezierCurveTo(0,35,1,36,2.3,36);
+    canvasPath.lineTo(36.699999999999996,36);
+    canvasPath.bezierCurveTo(37.99999999999999,36,38.99999999999999,35,38.99999999999999,33.7);
+    canvasPath.lineTo(38.99999999999999,12.2);
+    canvasPath.lineTo(38.99999999999999,7.199999999999999);
+    canvasPath.lineTo(38.99999999999999,3.1999999999999993);
+    canvasPath.bezierCurveTo(39,1.4,37.6,0,35.8,0);
+    canvasPath.closePath();
+    canvasPath.moveTo(30.7,16.8);
+    canvasPath.lineTo(16.6,30.7);
+    canvasPath.lineTo(8.3,22.5);
+    canvasPath.bezierCurveTo(7.800000000000001,22,7.800000000000001,21.2,8.3,20.7);
+    canvasPath.bezierCurveTo(8.8,20.2,9.600000000000001,20.2,10.100000000000001,20.7);
+    canvasPath.lineTo(16.6,27.2);
+    canvasPath.lineTo(28.9,15);
+    canvasPath.bezierCurveTo(29.4,14.5,30.2,14.5,30.7,15);
+    canvasPath.bezierCurveTo(31.2,15.5,31.2,16.3,30.7,16.8);
+};
+
+module.exports = {
+    defaultStyle:defaultStyle,
+    selectStyle:selectStyle
+};

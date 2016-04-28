@@ -1,0 +1,95 @@
+@import "reset";
+@import "size";
+.iconfont{
+  display: inline-block;
+}
+//黑色字体
+.color-black{
+  color: #333;
+}
+
+//灰色字体
+.color-gray{
+  color: #999;
+}
+
+
+//橘黄色字体
+
+.color-orange{
+  color: #E64A19;
+}
+
+.hide{
+  display: none;
+}
+
+.box{
+  display: -webkit-box;
+}
+
+//限制行字数
+.text-overflow-1,
+.text-overflow-2{
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.text-overflow-1{
+    -webkit-line-clamp: 1;
+}
+
+.text-overflow-2{
+    -webkit-line-clamp: 2;
+}
+
+.text-overflow{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+//字体对齐
+.justify{
+    text-align: justify;
+}
+
+.flex{
+  -webkit-box-flex: 1;
+}
+
+
+.visi-none{
+  visibility: hidden;
+}
+
+.over-flow{
+  overflow: hidden;
+}
+
+.display-block{
+  display: block;
+}
+
+.pos-r{
+  position: relative;
+}
+
+.bezier{
+  -webkit-transition: all .2s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all .2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body{
+  opacity: 0;
+  -webkit-transition: all .4s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all .4s cubic-bezier(0.77, 0, 0.175, 1);
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.body-show{
+  opacity: 1;
+}
