@@ -2,17 +2,13 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var dev =process.env.MODE;
-//var entryPage=path.join(__dirname, config.base + '/js/pages/');
-
-
+var dev = process.env.MODE;
 var app =process.env.app;
 var chunkConfig;
-var entryFile=path.join(__dirname, 'src/');
+
 switch (app){
     case "mobile":
         chunkConfig=require("./mobileConfig.js");
-        entryFile+="mobile/js/view/";
         break;
 }
 
@@ -110,9 +106,10 @@ var webpackDefaultConfig = {
 //判断采用哪种模板
 var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
 
+
 chunkConfig.forEach(function(item,i){
 
-    webpackDefaultConfig.entry[item.chunk]=entryFile+item.chunk;
+    webpackDefaultConfig.entry[item.chunk]=item.file+item.chunk;
 
     webpackDefaultConfig.plugins.push(new HtmlWebpackPlugin({
         title:item.title || "",
