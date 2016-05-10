@@ -1,12 +1,32 @@
 /**
  * Created by iwangx on 16/4/28.
  */
+import store from "../store/IndexStore";
+import action from "../action/IndexAction";
+
+import weatherStore from "../store/WeatherStore";
+import weatherAction from "../action/WeatherAction";
 
 var Index = React.createClass({
-
+    mixins: [
+        Reflux.connect(store, 'list'),
+        Reflux.connect(weatherStore, 'weather')
+    ],
+    getInitialState: function () {
+        return {list: [],weather:{}};
+    },
+    componentDidMount: function () {
+        action.getAll();
+        setTimeout(function(){
+            weatherAction.getWeather();
+        }.bind(this),1000);
+    },
     render:function(){
         return (
-            <div>{123}</div>
+            <div>
+                {this.state.list}
+                {'weather:'+JSON.stringify(this.state.weather)}
+            </div>
         )
     }
 });

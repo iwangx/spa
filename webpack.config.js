@@ -3,14 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var dev = process.env.MODE;
-var app =process.env.app;
-var chunkConfig;
-
-switch (app){
-    case "mobile":
-        chunkConfig=require("./mobileConfig.js");
-        break;
-}
+var chunkConfig=require("./readModuleConfig");
 
 var webpackDefaultConfig = {
     /**
@@ -31,7 +24,7 @@ var webpackDefaultConfig = {
      * js输出设置
      */
     output: {
-        path: path.join(__dirname,"dist"),
+        path: path.join(__dirname,chunkConfig.distFile),
         publicPath:"",
         chunkFilename:dev=="test"?"js/[name]-[chunkhash:8].js": 'js/[name].js',
         filename: dev=="test"?'js/[name]-[chunkhash:8].js':'js/[name].js'
@@ -85,7 +78,8 @@ var webpackDefaultConfig = {
             FastClick:"fastclick",
             classname:"classname",
             reqwest:"reqwest",
-            Reflux:"reflux"
+            Reflux:"reflux",
+            Mock:"mockjs"
         }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin("common",dev=="test"?"js/common-[hash:8].js":"js/common.js"),
@@ -107,7 +101,8 @@ var webpackDefaultConfig = {
 var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
 
 
-chunkConfig.forEach(function(item,i){
+//循环入口列表
+chunkConfig.chunkList.forEach(function(item,i){
 
     webpackDefaultConfig.entry[item.chunk]=item.file+item.chunk;
 

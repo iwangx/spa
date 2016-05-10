@@ -3,6 +3,19 @@ var path = require('path');
 var config = require('./config.json');
 var webpackDefaultConfig=require("./webpack.config");
 
+function getIPAdress(){
+    var interfaces = require('os').networkInterfaces();
+    for(var devName in interfaces){
+        var iface = interfaces[devName];
+        for(var i=0;i<iface.length;i++){
+            var alias = iface[i];
+            if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
+                return alias.address;
+            }
+        }
+    }
+}
+
 var webpackConfig = {
     /**
      * Server Configuration options
@@ -11,9 +24,9 @@ var webpackConfig = {
     devServer:{
         contentBase: path.join(__dirname, config.build),    //Relative directory for base of server
         hot: true,          //Live-reload
-        host:config.host || "127.0.0.1",
+        host:/*config.host*/ getIPAdress() || "127.0.0.1",
         inline: true,
-        port: config.port || 3000,    //Port Number
+        port:3000,    //Port Number
         // historyApiFallback: true,
         stats: {
             colors: true,
