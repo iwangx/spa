@@ -26,4 +26,10 @@
 	├── webpack.production.config.js
 	└── webpack.server.config.js
 	
-
+	
+#运行
+	npm run mobileServer
+	运行本地webpack-dev-server
+	
+	npm run mobileTest
+	运行打包提交测试
