@@ -1,4 +1,4 @@
-#文件夹解释
+##文件夹解释
 
 	├── mobileConfig.js                      #mobile项目的配置文件
 	├── package.js                           #打包后执行的文件
@@ -27,9 +27,14 @@
 	└── webpack.server.config.js
 	
 	
-#运行
+##运行
 	npm run mobileServer
 	运行本地webpack-dev-server
 	
 	npm run mobileTest
 	运行打包提交测试
+	
+	以后会增加php的配置
+	
+##mock
+[mockjs](http://mockjs.com/)
