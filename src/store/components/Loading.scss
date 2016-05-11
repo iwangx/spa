@@ -1,0 +1,48 @@
+@import "size";
+
+.loading-content{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%,-50%,0);
+  -webkit-transform: translate3d(-50%,-50%,0);
+  color: #fff;
+  -webkit-box-align:center;
+  padding: 0 $_47;
+  height:$_98 ;
+  background: rgba(0,0,0,.6);
+  border-radius: $_10;
+
+  i{
+    display: block;
+    animation: spin 6s linear infinite;
+    -webkit-animation: spin .9s linear infinite;
+    margin-right: $_20;
+    height: $_42;
+    width: $_42;
+    background: url(../../images/loading.png);
+    background-size: 100% 100%;
+  }
+}
+
+.loading-mask{
+  background: rgba(0,0,0,0);
+}
+
+@keyframes spin {
+  0% {
+    transform:rotate(0deg);
+  }
+  100% {
+    transform:rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform:rotate(0deg);
+  }
+  100% {
+    -webkit-transform:rotate(360deg);
+  }
+}

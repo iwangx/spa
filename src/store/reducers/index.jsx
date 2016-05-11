@@ -1,6 +1,7 @@
 var combineReducers=require("redux").combineReducers;
-var types=require("../constants/IndexTypes");
+var types=require("../const/IndexTypes");
 
+//初试的redux状态
 var initState=[
     {
         text: 'Use Redux',
@@ -9,9 +10,7 @@ var initState=[
     }
 ];
 
-var todos= function(state=initState,action){
-    //var state = arguments.length <= 0 || arguments[0] === undefined ? initState : arguments[0];
-    //var action = arguments[1];
+var todo= function(state=initState,action){
     switch (action.type) {
         case types.ADD_TODO:
             return [
@@ -64,7 +63,7 @@ var todos= function(state=initState,action){
 
         case types.GET_ALL:
             console.log(state);
-            return action;
+            return state;
             break;
 
         default:
@@ -72,6 +71,4 @@ var todos= function(state=initState,action){
     }
 };
 
-var indexReducer = combineReducers({todo:todos});
-
-module.exports=indexReducer;
+module.exports=combineReducers({todo:todo});

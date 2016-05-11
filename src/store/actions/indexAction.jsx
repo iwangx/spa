@@ -1,9 +1,10 @@
 /**
  * Created by iwangx on 16/3/22.
+ * 定义action 在view上直接调用action
  */
 
-//import * as types from '../constants/ActionTypes';
-var types =require("../constants/IndexTypes");
+
+var types =require("../const/IndexTypes");
 
 module.exports={
     addTodo:function(text){
@@ -25,8 +26,14 @@ module.exports={
         return { type: types.CLEAR_COMPLETED }
     },
     getAll:function(){
-        return {type:types.GET_ALL}
-    },
+        return function (dispatch){
+            setTimeout(function(){
+                dispatch({type:types.GET_ALL, data:[1231231313123] })
+            },3000)
+        }
+
+        //return {type:types.GET_ALL}
+    }
     //getAll:function(){
     //    return function (dispatch) {
     //        reqwest({

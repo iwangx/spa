@@ -6,7 +6,7 @@
 
 var path = require('path');
 //入口文件路径
-var viewFile=path.join(__dirname,"src/mobile/view/");
+var viewFile=path.join(__dirname,"../src/store/view/");
 //php view文件路径
 var phpFile = "../views";
 //入口列表
@@ -24,7 +24,7 @@ var config={
         })
     })(),
     //打包到哪里
-    distFile:'dist/mobile',
+    distFile:'dist/store',
     phpFile:phpFile
 };
 

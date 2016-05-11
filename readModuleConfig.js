@@ -4,16 +4,5 @@
  */
 
 var app =process.env.app;
-var chunkConfig;
-
-switch (app){
-    case "mobile":
-        chunkConfig=require("./mobileConfig.js");
-        break;
-    case "store":
-        chunkConfig=require("./storeConfig.js");
-        break;
-}
-
-
+var chunkConfig=require("./config/"+app+"Config.js");
 module.exports=chunkConfig;

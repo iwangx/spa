@@ -1,0 +1,27 @@
+@import "size";
+
+.dialog-content{
+  position: fixed;
+  left: 0;
+  bottom:0;
+  width: 100%;
+  background: #fff;
+  border-top: $_6 solid ;
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+
+  transition: all .2s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: all .2s cubic-bezier(0.77, 0, 0.175, 1);
+
+
+  &.show{
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}

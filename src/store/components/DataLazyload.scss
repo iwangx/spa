@@ -1,0 +1,21 @@
+@import "size";
+
+.data-lazy-load{
+
+}
+
+.data-lazy-wrip{
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	padding: $_20 0;
+	background:#fff;
+}
+
+.data-lazy-loading{
+	height: $_32;
+	width: $_32;
+	display: block;
+	background: url(../../images/loading.gif);
+	background-size: 100% 100%;
+	margin-right: $_10;
+}
