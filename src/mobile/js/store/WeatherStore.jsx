@@ -27,7 +27,7 @@ export default Reflux.createStore({
             type: 'json',
             success: function (resp) {
                 this.weather=resp;
-                this.trigger(this.weather);
+                this.trigger(resp);
             }.bind(this)
         })
     }

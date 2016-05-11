@@ -7,9 +7,11 @@ import action from "../action/IndexAction";
 import weatherStore from "../store/WeatherStore";
 import weatherAction from "../action/WeatherAction";
 
+import Alert from "../components/Alert";
+
 var Index = React.createClass({
     mixins: [
-        Reflux.connect(store, 'list'),
+        Reflux.connect(store,"list"),
         Reflux.connect(weatherStore, 'weather')
     ],
     getInitialState: function () {
@@ -26,6 +28,7 @@ var Index = React.createClass({
             <div>
                 {this.state.list}
                 {'weather:'+JSON.stringify(this.state.weather)}
+                <Alert show={true}>123123</Alert>
             </div>
         )
     }

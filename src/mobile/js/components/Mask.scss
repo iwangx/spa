@@ -1,0 +1,13 @@
+.dialog-mask{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  background: rgba(0,0,0,.6);
+}
+
+.dialog-mask-hide{
+  visibility: hidden;
+  left: -100%;
+}
