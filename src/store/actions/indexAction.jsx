@@ -26,13 +26,7 @@ module.exports={
         return { type: types.CLEAR_COMPLETED }
     },
     getAll:function(){
-        return function (dispatch){
-            setTimeout(function(){
-                dispatch({type:types.GET_ALL, data:[1231231313123] })
-            },3000)
-        }
-
-        //return {type:types.GET_ALL}
+        return {type:types.GET_ALL}
     }
     //getAll:function(){
     //    return function (dispatch) {

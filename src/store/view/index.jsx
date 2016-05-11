@@ -3,11 +3,16 @@
  */
 var bindActionCreators=require("redux").bindActionCreators;
 var connect=require("react-redux").connect;
+var Provider=require("react-redux").Provider;
+
+
 var actions=require("../actions/indexAction");
 var indexStore=require("../store/indexStore");
-var Provider=require("react-redux").Provider;
-require("../css/app.css");
 var store=indexStore();
+
+
+require("../css/app.css");
+
 
 
 var Index =React.createClass({
@@ -19,13 +24,13 @@ var Index =React.createClass({
     },
 
     click:function(){
-        var actions=this.props.actions;
-        actions.getAll();
+        var action=this.props.actions;
+        action.getAll();
     },
 
     render() {
         var todos= this.props.todo;
-        var actions=this.props.actions;
+        var action=this.props.actions;
         console.log("状态改变");
         return (
             <div>
@@ -37,14 +42,14 @@ var Index =React.createClass({
 });
 
 var IndexComp = connect(
-    function(state){
+    function(state) {
         return {
             //通过this.props.todos访问
-            todos: state.todos,
+            todo: state.todo,
             data:state.data
         }
     },
-    function(dispatch){
+    function(dispatch) {
         return {
             //通过this.props.actions访问
             actions: bindActionCreators(actions, dispatch)

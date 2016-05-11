@@ -62,8 +62,7 @@ var todo= function(state=initState,action){
             break;
 
         case types.GET_ALL:
-            console.log(state);
-            return state;
+            return state.concat(state);
             break;
 
         default:
