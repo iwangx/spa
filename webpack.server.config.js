@@ -25,7 +25,7 @@ var webpackConfig = {
     devServer:{
         contentBase: path.join(__dirname, chunkConfig.distFile),    //Relative directory for base of server
         hot: true,          //Live-reload
-        host:/*config.host*/ getIPAdress() || "127.0.0.1",
+        host:getIPAdress() || "127.0.0.1",
         inline: true,
         port:3000,    //Port Number
         // historyApiFallback: true,
