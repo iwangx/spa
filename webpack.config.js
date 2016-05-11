@@ -77,6 +77,7 @@ var webpackDefaultConfig = {
             ReactDOM:"react-dom",
             FastClick:"fastclick",
             classname:"classname",
+            classnames:"classnames",
             reqwest:"reqwest",
             Reflux:"reflux",
             Mock:"mockjs"

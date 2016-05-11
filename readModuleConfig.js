@@ -10,6 +10,9 @@ switch (app){
     case "mobile":
         chunkConfig=require("./mobileConfig.js");
         break;
+    case "store":
+        chunkConfig=require("./storeConfig.js");
+        break;
 }
 
 

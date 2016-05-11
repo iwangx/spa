@@ -1,0 +1,13 @@
+/**
+ * Created by iwangx on 16/3/22.
+ */
+
+module.exports={
+    ADD_TODO:"ADD_TODO",
+    DELETE_TODO:"DELETE_TODO",
+    EDIT_TODO:"EDIT_TODO",
+    COMPLETE_TODO:"COMPLETE_TODO",
+    COMPLETE_ALL:"COMPLETE_ALL",
+    CLEAR_COMPLETED:"CLEAR_COMPLETED",
+    GET_ALL:"GET_ALL"
+};
