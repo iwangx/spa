@@ -90,13 +90,11 @@ var webpackDefaultConfig = {
             minChunks: 5
         }),
         new webpack.optimize.DedupePlugin(),
-        //css配置
-        new ExtractTextPlugin(dev=="test"?'css/[name]-[contenthash:8].css':'css/[name].css'),
         new HtmlWebpackPlugin({
-            title:"",
+            title:"123",
             filename:"index.html" ,
             template: templateUrl,
-            chunks: ["entry"],
+            chunks: ["common"],
             inject:false
         })
     ]

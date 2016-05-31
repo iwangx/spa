@@ -77,13 +77,3 @@ var deletePath = function(path) {
 //
 //exists( 'images', 'dist/images', copy );
 //deletePath("images");
-
-console.log(chunkConfig);
-(dev == "test" || dev =="php") && chunkConfig.chunkList.forEach(function(item){
-    //原始目录
-    var srcDir=chunkConfig.distFile+"/"+item.fileName.split("/")[0];
-    //复制到的目录
-    var copyDir=chunkConfig.phpFile+"/"+item.fileName.split("/")[0];
-    exists(srcDir,copyDir,copy);
-    deletePath(srcDir);
-});
