@@ -13,7 +13,7 @@ require("./common.scss");
 //window.dialog=dialog;
 
 window.addEventListener("load",function(){
-    document.body.classList.add("body-show");
+    document.body.style.opacity=1;
 });
 
 FastClick.attach(document.body);

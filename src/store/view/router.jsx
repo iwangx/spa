@@ -17,15 +17,19 @@ const store = createStore(
 );
 
 const history = syncHistoryWithStore(hashHistory, store);
-
-var Index = require("./index");
-var About=require("./about");
-
 ReactDOM.render(
     <Provider key="provider" store={store}>
         <Router history={history}>
-            <Route path="/" component={Index} />
-            <Route path="/about" component={About} />
+            <Route path="/" getComponent={function(nextState, cb) {
+                require.ensure([], (require) => {
+                     cb(null, require("./index"))
+                })
+            }} />
+            <Route path="/about" getComponent={function(nextState, cb) {
+                require.ensure([], (require) => {
+                     cb(null, require("./about"))
+                })
+            }} />
         </Router>
     </Provider>,
     document.getElementById('app')

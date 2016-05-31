@@ -5,6 +5,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var dev = process.env.MODE;
 var chunkConfig=require("./readModuleConfig");
 
+//判断采用哪种模板
+var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
+console.log(path.resolve(__dirname, 'src/styles'));
 var webpackDefaultConfig = {
     /**
      * Entry points to the project
@@ -15,7 +18,8 @@ var webpackDefaultConfig = {
      * 这里是程序的入口，每个页面如果有js都需要在这里配置入口
      */
     entry: {
-        'common':['react', 'react-dom',path.join(__dirname,'src/common/common.js')]
+        'common':['react', 'react-dom',path.join(__dirname,'src/common/common.js')],
+        'entry':['src/store/view/router']
     },
 
     /**
@@ -26,8 +30,8 @@ var webpackDefaultConfig = {
     output: {
         path: path.join(__dirname,chunkConfig.distFile),
         publicPath:"",
-        chunkFilename:dev=="test"?"js/[name]-[chunkhash:8].js": 'js/[name].js',
-        filename: dev=="test"?'js/[name]-[chunkhash:8].js':'js/[name].js'
+        filename: dev=="test"?'js/[name]-[chunkhash:8].js':'js/[name].js',
+        chunkFilename:dev=="test"?"js/[name]-[chunkhash:8].js": 'js/[name].js'
     },
 
     /**
@@ -48,9 +52,8 @@ var webpackDefaultConfig = {
                 }
             },
             {
-                test: /\.(scss|css)$/,
-                include: __dirname,
-                loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')
+                test: /\.scss$/,
+                loader: 'style!css?modules&localIdentName=[name]-[hash:base64:8]!sass?sourceMap=true'
             }
         ]
     },
@@ -63,7 +66,6 @@ var webpackDefaultConfig = {
         alias: {
             //这里设置别名
             //jsx控件文件夹
-            C:path.join(__dirname,"src/components")
         },
         modulesDirectories: ["web_modules", "node_modules", 'bower_components'],
         extensions: ['', '.js', '.json', '.jsx', '.scss', '.css']
@@ -77,10 +79,7 @@ var webpackDefaultConfig = {
             ReactDOM:"react-dom",
             FastClick:"fastclick",
             classname:"classname",
-            classnames:"classnames",
-            reqwest:"reqwest",
-            Reflux:"reflux",
-            Mock:"mockjs"
+            reqwest:"reqwest"
         }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin("common",dev=="test"?"js/common-[hash:8].js":"js/common.js"),
@@ -93,27 +92,15 @@ var webpackDefaultConfig = {
         }),
         new webpack.optimize.DedupePlugin(),
         //css配置
-        new ExtractTextPlugin(dev=="test"?'css/[name]-[contenthash:8].css':'css/[name].css')
+        new ExtractTextPlugin(dev=="test"?'css/[name]-[contenthash:8].css':'css/[name].css'),
+        new HtmlWebpackPlugin({
+            title:"",
+            filename:"index.html" ,
+            template: templateUrl,
+            chunks: ["common","entry"],
+            inject:false
+        })
     ]
 };
-
-
-//判断采用哪种模板
-var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
-
-
-//循环入口列表
-chunkConfig.chunkList.forEach(function(item,i){
-
-    webpackDefaultConfig.entry[item.chunk]=item.file+item.chunk;
-
-    webpackDefaultConfig.plugins.push(new HtmlWebpackPlugin({
-        title:item.title || "",
-        filename: dev =="server" ?item.chunk + ".html":item.fileName+".php",
-        template:  templateUrl,
-        chunks: ["common",item.chunk],
-        inject:false
-    }));
-});
 
 module.exports = webpackDefaultConfig;

@@ -3,19 +3,7 @@ var path = require('path');
 //var config = require('./config.json');
 var webpackDefaultConfig=require("./webpack.config");
 var chunkConfig=require("./readModuleConfig");
-
-function getIPAdress(){
-    var interfaces = require('os').networkInterfaces();
-    for(var devName in interfaces){
-        var iface = interfaces[devName];
-        for(var i=0;i<iface.length;i++){
-            var alias = iface[i];
-            if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
-                return alias.address;
-            }
-        }
-    }
-}
+var ip=require("./util").getIPAddress();
 
 var webpackConfig = {
     /**
@@ -25,7 +13,7 @@ var webpackConfig = {
     devServer:{
         contentBase: path.join(__dirname, chunkConfig.distFile),    //Relative directory for base of server
         hot: true,          //Live-reload
-        host:getIPAdress() || "127.0.0.1",
+        host:ip|| "127.0.0.1",
         inline: true,
         port:30001,    //Port Number
         // historyApiFallback: true,

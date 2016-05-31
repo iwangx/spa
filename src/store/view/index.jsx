@@ -7,7 +7,7 @@ var action=require("../actions/indexAction");
 
 var Link = require('react-router').Link;
 
-require("../css/app.css");
+require("../css/app.scss");
 
 
 
