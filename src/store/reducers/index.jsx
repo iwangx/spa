@@ -11,6 +11,7 @@ var initState=[
 ];
 
 var todo= function(state=initState,action){
+    var newState=Object.assign({},state);
     switch (action.type) {
         case types.ADD_TODO:
             return [
@@ -62,7 +63,7 @@ var todo= function(state=initState,action){
             break;
 
         case types.GET_ALL:
-            return state.concat(state);
+            return state.concat([]);
             break;
 
         default:

@@ -27,7 +27,7 @@ var webpackConfig = {
         hot: true,          //Live-reload
         host:getIPAdress() || "127.0.0.1",
         inline: true,
-        port:3000,    //Port Number
+        port:30001,    //Port Number
         // historyApiFallback: true,
         stats: {
             colors: true,

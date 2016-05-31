@@ -23,6 +23,7 @@ var Index =React.createClass({
         }
     },
 
+
     click:function(){
         var action=this.props.actions;
         action.getAll();
@@ -45,8 +46,7 @@ var IndexComp = connect(
     function(state) {
         return {
             //通过this.props.todos访问
-            todo: state.todo,
-            data:state.data
+            todo: state.todo
         }
     },
     function(dispatch) {
