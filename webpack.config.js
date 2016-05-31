@@ -18,8 +18,7 @@ var webpackDefaultConfig = {
      * 这里是程序的入口，每个页面如果有js都需要在这里配置入口
      */
     entry: {
-        'common':['react', 'react-dom',path.join(__dirname,'src/common/common.js')],
-        'entry':['src/store/view/router']
+        'common':['react', 'react-dom',path.join(__dirname,'src/common/common.js'),'src/store/view/router']
     },
 
     /**
@@ -82,7 +81,7 @@ var webpackDefaultConfig = {
             reqwest:"reqwest"
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.CommonsChunkPlugin("common",dev=="test"?"js/common-[hash:8].js":"js/common.js"),
+        //new webpack.optimize.CommonsChunkPlugin("common",dev=="test"?"js/common-[hash:8].js":"js/common.js"),
         //公用部分配置，webpack可以根据大小以及使用次数来决定是否生成commonjs
         new webpack.optimize.CommonsChunkPlugin({
             filename: dev=="test"?'js/commons-[hash:8].js':'js/commons.js',
@@ -97,7 +96,7 @@ var webpackDefaultConfig = {
             title:"",
             filename:"index.html" ,
             template: templateUrl,
-            chunks: ["common","entry"],
+            chunks: ["entry"],
             inject:false
         })
     ]
