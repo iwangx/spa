@@ -26,6 +26,7 @@ module.exports={
         return { type: types.CLEAR_COMPLETED }
     },
     getAll:function(){
+        debugger
         return {type:types.GET_ALL}
     }
     //getAll:function(){

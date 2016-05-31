@@ -3,15 +3,10 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "server": "MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors",
-    "test": "MODE=test webpack --config webpack.config.production.js --progress && MODE=test node packageSuccess",
-    "php":"MODE=php webpack --config webpack.config.production.js --progress && MODE=php node packageSuccess",
-
     "mobileServer":"app=mobile MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors ",
     "mobileTest":"app=mobile MODE=test webpack --config webpack.production.config.js --progress && app=mobile  MODE=test node package",
-    "storeServer":"app=store MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors ",
-    "storeTest":"app=store MODE=test webpack --config webpack.production.config.js --progress && app=store  MODE=test node package"
-
+    "server":"app=store MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors ",
+    "test":"app=store MODE=test webpack --config webpack.production.config.js --progress && app=store  MODE=test node package"
   },
   "author": "FE@wepiao.com",
   "license": "MIT",
@@ -49,7 +44,8 @@
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
     "redux-thunk":"^2.0.1",
-
+    "react-router":"^2.3.0",
+    "react-router-redux":"^4.0.4"
   }
 }
 

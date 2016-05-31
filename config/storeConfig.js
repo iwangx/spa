@@ -11,8 +11,8 @@ var viewFile=path.join(__dirname,"../src/store/view/");
 var phpFile = "../views";
 //入口列表
 var chunkList=[
-    //首页
-    {fileName:"default/index",chunk:"index"}
+    //入口
+    {fileName:"default/index",chunk:"router"}
 ];
 
 var config={
