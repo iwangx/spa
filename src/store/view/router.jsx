@@ -9,25 +9,29 @@ var Route = require('react-router').Route;
 var Link = require('react-router').Link;
 var hashHistory=require("react-router").hashHistory;
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import index from '../reducers/index'
-import about from '../reducers/about'
+import index from '../reducers/home/index'
+import about from '../reducers/home/about'
 
 const store = createStore(
     combineReducers({ index,about, routing: routerReducer})
 );
 
+function routerChange() {
+    console.log("change ")
+}
+
 const history = syncHistoryWithStore(hashHistory, store);
 ReactDOM.render(
     <Provider key="provider" store={store}>
-        <Router history={history}>
+        <Router onUpdate={routerChange} history={history}>
             <Route path="/" getComponent={function(nextState, cb) {
                 require.ensure([], (require) => {
-                     cb(null, require("./index"))
+                     cb(null, require("./home/index"))
                 })
             }} />
             <Route path="/about" getComponent={function(nextState, cb) {
                 require.ensure([], (require) => {
-                     cb(null, require("./about"))
+                     cb(null, require("./home/about"))
                 })
             }} />
         </Router>

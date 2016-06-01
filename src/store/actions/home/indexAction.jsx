@@ -4,7 +4,7 @@
  */
 
 
-var types =require("../const/IndexTypes");
+var types =require("../../const/home/IndexTypes");
 
 module.exports={
     addTodo:function(text){

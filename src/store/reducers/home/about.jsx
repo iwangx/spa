@@ -2,7 +2,7 @@
  * Created by iwangx on 16/5/31.
  */
 var combineReducers=require("redux").combineReducers;
-var types=require("../const/aboutTypes");
+var types=require("../../const/home/aboutTypes");
 
 var initState={
     name:123

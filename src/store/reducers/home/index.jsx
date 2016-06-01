@@ -1,5 +1,5 @@
 var combineReducers=require("redux").combineReducers;
-var types=require("../const/IndexTypes");
+var types=require("../../const/home/IndexTypes");
 
 //初试的redux状态
 var initState=[

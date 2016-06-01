@@ -3,11 +3,11 @@
  */
 var bindActionCreators=require("redux").bindActionCreators;
 var connect=require("react-redux").connect;
-var action=require("../actions/indexAction");
+var action=require("../../actions/home/indexAction");
 
 var Link = require('react-router').Link;
 
-require("../css/app.scss");
+require("../../css/home/app.scss");
 
 
 

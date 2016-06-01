@@ -11,6 +11,10 @@ var PRODUCT_CONFIG = {
             {
                 test: /\.(ttf|eot|svg|woff[1-9]?)$/,
                 loader: "file?name=../fonts/[name]-[hash:8].[ext]"
+            },
+            {
+                test: /\.jpeg?$/,
+                loader: 'file?name=../../images/[name]-[hash:8].[ext]'//20k
             }
         ]
     },

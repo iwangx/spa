@@ -2,7 +2,7 @@
  * Created by iwangx on 16/3/22.
  */
 var createStore=require("redux").createStore;
-var indexReducer=require('../reducers/index');
+var indexReducer=require('../../reducers/home/index');
 var applyMiddleware=require("redux").applyMiddleware;
 var thunkMiddleware=require("redux-thunk").default;
 module .exports = function(initialState) {

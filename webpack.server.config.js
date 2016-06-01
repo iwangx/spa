@@ -45,6 +45,10 @@ var webpackConfig = {
             {
                 test: /\.(ttf|eot|svg|woff[1-9]?)$/,
                 loader: "file?name=../../fonts/[name].[ext]"
+            },
+            {
+                test: /\.jpeg?$/,
+                loader: 'file?name=../../images/[name]-[hash:8].[ext]'//20k
             }
         ]
     },
