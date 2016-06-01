@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var dev = process.env.MODE;

@@ -71,9 +71,6 @@ var deletePath = function(path) {
     }
 };
 
-//复制fonts目录
-//exists( 'fonts', 'dist/fonts', copy );
-//deletePath("fonts");
-//
-//exists( 'images', 'dist/images', copy );
-//deletePath("images");
+//复制images目录
+exists( 'images', 'dist/store/images', copy );
+deletePath("images");
