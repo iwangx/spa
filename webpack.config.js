@@ -16,7 +16,7 @@ var webpackDefaultConfig = {
      * 这里是程序的入口，每个页面如果有js都需要在这里配置入口
      */
     entry: {
-        'common':['react', 'react-dom',path.join(__dirname,'src/common/common.js'),'src/store/view/router']
+        'common':['react', 'react-dom','redux','react-redux','redux-thunk','react-router',path.join(__dirname,'src/common/common.js'),'src/store/view/router']
     },
 
     /**

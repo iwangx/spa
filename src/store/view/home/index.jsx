@@ -3,13 +3,12 @@
  */
 var bindActionCreators=require("redux").bindActionCreators;
 var connect=require("react-redux").connect;
-var action=require("../../actions/home/indexAction");
-
 var Link = require('react-router').Link;
+var Provider=require("react-redux").Provider;
 
+var action=require("../../actions/home/indexAction");
+var store=require("../../store/home/indexStore");
 require("../../css/home/app.scss");
-
-
 
 var Index =React.createClass({
 
@@ -43,7 +42,7 @@ var IndexComp = connect(
     function(state) {
         return {
             //通过this.props.todos访问
-            todo: state.index.todo
+            todo: state.todo
         }
     },
     function(dispatch) {
@@ -54,4 +53,9 @@ var IndexComp = connect(
     }
 )(Index);
 
-module.exports=IndexComp;
+
+module.exports=React.createClass({
+    render: function () {
+        return (<Provider store={store}><IndexComp/></Provider>)
+    }
+});
