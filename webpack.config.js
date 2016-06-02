@@ -6,7 +6,6 @@ var chunkConfig=require("./readModuleConfig");
 
 //判断采用哪种模板
 var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
-console.log(path.resolve(__dirname, 'src/styles'));
 var webpackDefaultConfig = {
     /**
      * Entry points to the project
@@ -51,7 +50,7 @@ var webpackDefaultConfig = {
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css?modules&localIdentName=[name]-[hash:base64:8]!sass?sourceMap=true'
+                loader: 'style!css?modules&localIdentName=[name]-[hash:base64:8]!sass?sourceMap=true!autoprefixer'
             }
         ]
     },
