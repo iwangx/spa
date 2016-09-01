@@ -3,7 +3,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var dev = process.env.MODE;
 var chunkConfig=require("./readModuleConfig");
-
+var AssetsPlugin=require("assets-webpack-plugin");
 //判断采用哪种模板
 var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
 var webpackDefaultConfig = {
@@ -94,6 +94,13 @@ var webpackDefaultConfig = {
             template: templateUrl,
             chunks: ["common"],
             inject:false
+        }),
+        new AssetsPlugin({
+            filename: 'assets.js',
+            prettyPrint: false,
+            processOutput:function (assets) {
+                return 'window.staticMap = ' + JSON.stringify(assets);
+            }
         })
     ]
 };

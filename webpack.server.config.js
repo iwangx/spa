@@ -11,7 +11,7 @@ var webpackConfig = {
      * doc: http://webpack.github.io/docs/webpack-dev-server.html
      */
     devServer:{
-        contentBase: path.join(__dirname, chunkConfig.distFile),    //Relative directory for base of server
+        contentBase:__dirname ,//path.join(__dirname, chunkConfig.distFile),    //Relative directory for base of server
         hot: true,          //Live-reload
         host:ip|| "127.0.0.1",
         inline: true,
