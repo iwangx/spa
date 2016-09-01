@@ -1,1 +1,1 @@
-window.staticMap = {"common":{"js":"js/common-bce66655.js"}}
+window.staticMap = {"common":{"js":"js/common.js"}}

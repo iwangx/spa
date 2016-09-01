@@ -1,13 +1,11 @@
 /**
  * Created by iwangx on 16/3/22.
  */
-var bindActionCreators=require("redux").bindActionCreators;
-var connect=require("react-redux").connect;
-var Link = require('react-router').Link;
-var Provider=require("react-redux").Provider;
-
-var action=require("../../actions/home/indexAction");
-var store=require("../../store/home/indexStore");
+import bindRedux from "../../common/ConnectRedux"
+import reducer from "../../reducers/home/index"
+import action from "../../actions/home/indexAction"
+import { Link } from  "react-router"
+import style from  '../../css/home/about.scss'
 require("../../css/home/app.scss");
 
 var Index =React.createClass({
@@ -38,24 +36,4 @@ var Index =React.createClass({
     }
 });
 
-var IndexComp = connect(
-    function(state) {
-        return {
-            //通过this.props.todos访问
-            todo: state.todo
-        }
-    },
-    function(dispatch) {
-        return {
-            //通过this.props.actions访问
-            actions: bindActionCreators(action, dispatch)
-        }
-    }
-)(Index);
-
-
-module.exports=React.createClass({
-    render: function () {
-        return (<Provider store={store}><IndexComp/></Provider>)
-    }
-});
+module.exports=bindRedux(Index,reducer,action);

@@ -1,13 +1,10 @@
 /**
  * Created by iwangx on 16/5/31.
  */
-var bindActionCreators=require("redux").bindActionCreators;
-var connect=require("react-redux").connect;
-var action=require("../../actions/home/aboutAction");
-var Provider=require("react-redux").Provider;
-
-var store=require("../../store/home/aboutStore");
-import style from  '../../css/home/about.scss';
+import bindRedux  from "../../common/ConnectRedux"
+import reducer from "../../reducers/home/about"
+import action from "../../actions/home/aboutAction"
+import style from  '../../css/home/about.scss'
 
 var About=React.createClass({
 
@@ -34,23 +31,4 @@ var About=React.createClass({
     }
 });
 
-var AboutComp = connect(
-    function(state) {
-        return {
-            //通过this.props.todos访问
-            todo: state.todo
-        }
-    },
-    function(dispatch) {
-        return {
-            //通过this.props.actions访问
-            actions: bindActionCreators(action, dispatch)
-        }
-    }
-)(About);
-
-module.exports=React.createClass({
-    render: function () {
-        return (<Provider store={store}><AboutComp/></Provider>)
-    }
-});
+module.exports = bindRedux(About,reducer,action);
