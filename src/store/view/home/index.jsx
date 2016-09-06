@@ -6,7 +6,6 @@ import reducer from "../../reducers/home/index"
 import action from "../../actions/home/indexAction"
 import { Link } from  "react-router"
 import style from  '../../css/home/about.scss'
-require("../../css/home/app.scss");
 
 var Index =React.createClass({
 

@@ -9,13 +9,15 @@
 	width: 241px;
 	transform: translate3d(0,0,0);
 }
-//使用className={style.aboutA}
-.about-a{
-	background: #000;
-}
+
 //全局样式可以直接用className="c"访问
 :global(.c){
 	background: #ff0;
 	height: 50px;
 	width: 50px;
+}
+
+/*使用 className={style.aboutA}*/
+.about-a{
+	background: #000;
 }

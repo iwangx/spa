@@ -26,9 +26,7 @@ var About=React.createClass({
         return (
             <div className={classname(style.style,style.back,style.aboutA)}  onClick={this.click}>
                 {todos.name}
-                <div className="c">
-
-                </div>
+                <div className="c"></div>
             </div>
         )
     }
