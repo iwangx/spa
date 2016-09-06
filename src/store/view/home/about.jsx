@@ -24,8 +24,11 @@ var About=React.createClass({
         var todos= this.props.todo;
         var actions=this.props.actions;
         return (
-            <div className={classname(style.style,style.back)}  onClick={this.click}>
+            <div className={classname(style.style,style.back,style.aboutA)}  onClick={this.click}>
                 {todos.name}
+                <div className="c">
+
+                </div>
             </div>
         )
     }

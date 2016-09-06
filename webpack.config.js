@@ -50,7 +50,7 @@ var webpackDefaultConfig = {
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css?modules&localIdentName=[name]-[hash:base64:8]!sass?sourceMap=true!autoprefixer'
+                loader: 'style!css?camelCase&modules&localIdentName=[local]-[hash:base64:8]!sass?sourceMap=false!autoprefixer'
             }
         ]
     },

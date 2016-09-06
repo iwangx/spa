@@ -1,9 +1,7 @@
 /**
  * Created by iwangx on 16/5/31.
  */
-var Router = require('react-router').Router;
-var Route = require('react-router').Route;
-var hashHistory=require("react-router").hashHistory;
+import {Router,Route,hashHistory} from "react-router"
 
 function routerChange() {
     console.log("change ")
