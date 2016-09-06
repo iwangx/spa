@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "server":"app=store MODE=server webpack-dev-server --config webpack.server.config.js --progress --inline --colors ",
-    "test":"app=store MODE=test webpack --config webpack.production.config.js --progress && app=store  MODE=test node package"
+    "test":"app=store MODE=test webpack --config webpack.production.config.js --progress"
   },
   "author": "https://github.com/iwangx",
   "license": "MIT",

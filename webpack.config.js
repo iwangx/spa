@@ -4,6 +4,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var dev = process.env.MODE;
 var chunkConfig=require("./readModuleConfig");
 var AssetsPlugin=require("assets-webpack-plugin");
+//是否是需要打包的时候
+var isTest =  (dev == "test");
 //判断采用哪种模板
 var templateUrl=(dev == "server"?"template/server.template.html":"template/test.template.html");
 var webpackDefaultConfig = {
@@ -26,9 +28,10 @@ var webpackDefaultConfig = {
      */
     output: {
         path: path.join(__dirname,chunkConfig.distFile),
-        publicPath:"",
-        filename: dev=="test"?'js/[name]-[chunkhash:8].js':'js/[name].js',
-        chunkFilename:dev=="test"?"js/[name]-[chunkhash:8].js": 'js/[name].js'
+        //这里的路径必须要为绝对地址,否则图片有可能找不到
+        publicPath:isTest?"http://test.com/":"",
+        filename: isTest?'js/[name]-[chunkhash:8].js':'js/[name].js',
+        chunkFilename:isTest?"js/[name]-[chunkhash:8].js": 'js/[name].js'
     },
 
     /**
@@ -49,7 +52,7 @@ var webpackDefaultConfig = {
                 }
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|css)$/,
                 loader: 'style!css?camelCase&modules&localIdentName=[local]-[hash:base64:8]!sass?sourceMap=false!autoprefixer'
             }
         ]
@@ -61,7 +64,7 @@ var webpackDefaultConfig = {
     resolve: {
         root: __dirname,
         alias: {
-            //这里设置别名
+            //这里设置别名,其实可以不用设置
             //jsx控件文件夹
         },
         modulesDirectories: ["web_modules", "node_modules", 'bower_components'],
@@ -88,6 +91,7 @@ var webpackDefaultConfig = {
             minChunks: 5
         }),
         new webpack.optimize.DedupePlugin(),
+        //在打包或者开本地服务器的时候快速调整
         new HtmlWebpackPlugin({
             title:"123",
             filename:"index.html" ,

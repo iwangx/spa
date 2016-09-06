@@ -6,7 +6,7 @@ var PRODUCT_CONFIG = {
         loaders: [
             {
                 test: /\.(png|jpg|svg|gif)$/,
-                loader: 'url?limit=20480&name=../images/[name]-[hash:8].[ext]'//20k
+                loader: 'url?limit=20480&name=[name]-[hash:8].[ext]'//20k
             },
             {
                 test: /\.(ttf|eot|svg|woff[1-9]?)$/,
@@ -14,7 +14,7 @@ var PRODUCT_CONFIG = {
             },
             {
                 test: /\.jpeg?$/,
-                loader: 'file?name=../../images/[name]-[hash:8].[ext]'//20k
+                loader: 'file?name=[name]-[hash:8].[ext]'//20k
             }
         ]
     },
