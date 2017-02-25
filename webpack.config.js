@@ -43,12 +43,12 @@ var webpackDefaultConfig = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /\.(jsx|js)$/,
                 loader: 'babel',
                 exclude: /node_modules/,
                 include: __dirname,
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['es2015','react',"stage-0","stage-1","stage-2","stage-3"]
                 }
             },
             {
