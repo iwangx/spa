@@ -1,1 +1,1 @@
-window.staticMap = {"common":{"js":"http://test.com/js/common-1da41e83.js"}}
+window.staticMap = {"common":{"js":"js/common.js"}}
