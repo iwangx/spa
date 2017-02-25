@@ -43,7 +43,8 @@
     "react-router":"^2.3.0",
     "whatwg-fetch":"^1.0.0",
     "fetch-jsonp":"^1.0.0",
-    "assets-webpack-plugin":"^3.4.0"
+    "assets-webpack-plugin":"^3.4.0",
+    "redux-async-actions-reducers":"1.1.2"
   }
 }
 
