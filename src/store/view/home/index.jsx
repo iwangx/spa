@@ -1,8 +1,13 @@
 /**
  * Created by iwangx on 16/3/22.
  */
-import bindRedux from "../../common/ConnectRedux"
-import reducer from "../../reducers/home/index"
+
+
+import  {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+
+//import bindRedux from "../../common/ConnectRedux"
+//import reducer from "../../reducers/home/index"
 import action from "../../actions/home/indexAction"
 import { Link } from  "react-router"
 import style from  '../../css/home/about.scss'
@@ -35,4 +40,17 @@ var Index =React.createClass({
     }
 });
 
-module.exports=bindRedux(Index,reducer,action);
+module.exports = connect(
+    function(state) {
+        return {
+            //通过this.props.todos访问
+            todo: state.home
+        }
+    },
+    function(dispatch) {
+        return {
+            //通过this.props.actions访问
+            actions: bindActionCreators(action, dispatch)
+        }
+    }
+)(Index);

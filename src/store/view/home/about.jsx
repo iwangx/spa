@@ -1,8 +1,11 @@
 /**
  * Created by iwangx on 16/5/31.
  */
-import bindRedux  from "../../common/ConnectRedux"
-import reducer from "../../reducers/home/about"
+
+import  {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+//import bindRedux  from "../../common/ConnectRedux"
+//import reducer from "../../reducers/home/about"
 import action from "../../actions/home/aboutAction"
 import style from  '../../css/home/about.scss'
 
@@ -32,4 +35,19 @@ var About=React.createClass({
     }
 });
 
-module.exports = bindRedux(About,reducer,action);
+
+
+module.exports = connect(
+    function(state) {
+        return {
+            //通过this.props.todos访问
+            todo: state.about
+        }
+    },
+    function(dispatch) {
+        return {
+            //通过this.props.actions访问
+            actions: bindActionCreators(action, dispatch)
+        }
+    }
+)(About);

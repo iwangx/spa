@@ -1,6 +1,4 @@
-var combineReducers=require("redux").combineReducers;
 var types=require("../../const/home/IndexTypes");
-
 //初试的redux状态
 var initState=[
     {
@@ -10,7 +8,7 @@ var initState=[
     }
 ];
 
-var todo= function(state=initState,action){
+module.exports=function(state=initState,action){
     var newState=Object.assign({},state);
     switch (action.type) {
         case types.GET_ALL:
@@ -21,5 +19,3 @@ var todo= function(state=initState,action){
             return state
     }
 };
-
-module.exports=combineReducers({todo:todo});
